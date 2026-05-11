@@ -1,0 +1,35 @@
+model User {
+  id            String    @id
+  name          String
+  email         String
+  emailVerified Boolean   @default(false)
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  sessions      Session[]
+  accounts      Account[]
+
+  oauthclients       OauthClient[]
+  oauthrefreshtokens OauthRefreshToken[]
+  oauthaccesstokens  OauthAccessToken[]
+  oauthconsents      OauthConsent[]
+
+  @@unique([email])
+  @@map("user")
+  @@schema("core")
+}
+
+model Application {
+  id            String   @id
+  name          String
+  slug          String
+  description   String?
+  oAuthClientId String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  oAuthClient OauthClient @relation(fields: [oAuthClientId], references: [clientId])
+
+  @@map("application")
+  @@schema("core")
+}
