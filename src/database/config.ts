@@ -1,4 +1,4 @@
-import { env } from "@lib/env.ts";
+import { env } from "../../src/lib/env.ts";
 
 const user = env("PG_USER");
 const password = env("PG_PASSWORD");

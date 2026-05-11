@@ -1,5 +1,11 @@
 import { env } from "@lib/env.ts";
+const protocol = env("PROTOCOL");
+const host = env("HOST");
+const port = parseInt(env("PORT"));
 
 export const ServerConfig = {
-  port: parseInt(env("PORT")),
+  protocol,
+  host,
+  port,
+  baseURL: `${protocol}://${host}:${port}`,
 };

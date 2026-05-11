@@ -1,3 +1,5 @@
+PROTOCOL=http
+HOST=localhost
 PORT=4000
 
 BETTER_AUTH_SECRET=unsecure_local_secret
