@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "api:dev": "deno run --watch src/api/server.ts"
+  },
+  "imports": {
+    "@api/": "./src/api/",
+    "@cli/": "./src/cli/",
+    "hono": "npm:hono@^4.12.18"
+  }
+}
