@@ -1,10 +1,12 @@
 {
   "tasks": {
-    "api:dev": "deno run --watch src/api/server.ts"
+    "api:dev": "deno run -A --env-file=config/api.env.local --watch src/api/server.ts"
   },
   "imports": {
     "@api/": "./src/api/",
     "@cli/": "./src/cli/",
-    "hono": "npm:hono@^4.12.18"
+    "@lib/": "./src/lib/",
+    "hono": "npm:hono@^4.12.18",
+    "picocolors": "npm:picocolors@^1.1.1"
   }
 }
