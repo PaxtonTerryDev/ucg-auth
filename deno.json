@@ -1,12 +1,31 @@
 {
   "tasks": {
-    "api:dev": "deno run -A --env-file=config/api.env.local --watch src/api/server.ts"
+    "api:dev": "deno run -A --env-file=env/api.local --watch src/api/server.ts",
+    "db:generate": "deno run -A --env=.env npm:prisma generate",
+    "db:push": "deno run -A --env=.env npm:prisma db push",
+    "db:migrate": "deno run -A --env=.env npm:prisma migrate dev",
+    "db:seed": "deno run -A --env=.env npm:prisma db seed"
+  },
+  "nodeModulesDir": "auto",
+  "compilerOptions": {
+    "lib": [
+      "deno.window"
+    ],
+    "types": [
+      "node"
+    ]
   },
   "imports": {
     "@api/": "./src/api/",
     "@cli/": "./src/cli/",
     "@lib/": "./src/lib/",
+    "@database/": "./src/database/",
+    "@prisma/adapter-pg": "npm:@prisma/adapter-pg@^7.8.0",
+    "@prisma/client": "npm:@prisma/client@^7.8.0",
+    "better-auth": "npm:better-auth@^1.6.10",
     "hono": "npm:hono@^4.12.18",
-    "picocolors": "npm:picocolors@^1.1.1"
-  }
+    "picocolors": "npm:picocolors@^1.1.1",
+    "prisma": "npm:prisma@^7.8.0"
+  },
+  "allowScripts": ["npm:@prisma/engines@7.8.0", "npm:prisma@7.8.0"]
 }
