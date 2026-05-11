@@ -19,8 +19,21 @@ model Role {
   updatedAt       DateTime         @updatedAt
   group           Group            @relation(fields: [groupId], references: [id], onDelete: Cascade)
   rolePermissions RolePermission[]
+  userRoles       UserRole[]
 
   @@map("role")
+  @@schema("rbac")
+}
+
+model UserRole {
+  userId    String
+  roleId    String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role      Role     @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@id([userId, roleId])
+  @@map("userRole")
   @@schema("rbac")
 }
 

@@ -13,6 +13,7 @@ model User {
   oauthrefreshtokens OauthRefreshToken[]
   oauthaccesstokens  OauthAccessToken[]
   oauthconsents      OauthConsent[]
+  userRoles          UserRole[]
 
   @@unique([email])
   @@map("user")
