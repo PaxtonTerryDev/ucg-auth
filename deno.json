@@ -16,7 +16,9 @@
     ],
     "types": [
       "node"
-    ]
+    ],
+    "jsx": "react-jsx",
+    "jsxImportSource": "hono/jsx"
   },
   "imports": {
     "@api/": "./src/api/",
