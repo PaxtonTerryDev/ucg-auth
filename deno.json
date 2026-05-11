@@ -1,5 +1,6 @@
 {
   "tasks": {
+    "setup": "deno run -A --env-file=env.env/database.local/env ./scripts/setup.ts",
     "api:dev": "deno run -A --env-file=env/api.local.env --env-file=env/database.local.env --watch src/api/server.ts",
     "auth:generate": "deno run -A --env-file=env/database.local.env --env-file=env/api.local --env=.env npm:auth generate --config ./src/api/auth.ts --output ./src/database/schema.prisma",
     "db:generate": "deno run -A --env-file=env/database.local.env --env=.env npm:prisma generate",
