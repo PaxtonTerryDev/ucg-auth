@@ -80,3 +80,5 @@ deno run api:dev # Starts up a local instance of the api
 ```
 
 You can find more specific documentation for each "module" inside each of the `src/` sub-directories (they all should have their own `README.md` that explains how the module works / is structured)
+
+## Common Pitfalls

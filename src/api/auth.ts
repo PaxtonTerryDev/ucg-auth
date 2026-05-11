@@ -1,6 +1,7 @@
-import { betterAuth, jwt } from "better-auth";
+import { betterAuth } from "better-auth";
+import { jwt } from "better-auth/plugins";
 import { prismaAdapter } from "better-auth/adapters/prisma";
-import { prisma } from "../database/prisma.ts"; // Can't use aliased imports -> breaks auth cli
+import { prisma } from "@database/prisma.ts";
 import { ServerConfig } from "./config.ts";
 import { oauthProvider } from "@better-auth/oauth-provider";
 
@@ -12,10 +13,14 @@ export const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
+  emailAndPassword: {
+    enabled: true,
+  },
   plugins: [
     jwt(),
     oauthProvider({
-      loginPage: "",
+      loginPage: "/sign-in",
+      consentPage: "/consent",
     }),
   ],
 });
