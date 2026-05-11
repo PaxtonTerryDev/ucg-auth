@@ -24,6 +24,7 @@
     "@api/": "./src/api/",
     "@better-auth/oauth-provider": "npm:@better-auth/oauth-provider@^1.6.10",
     "@cli/": "./src/cli/",
+    "@cliffy/command": "jsr:@cliffy/command@^1.1.0",
     "@lib/": "./src/lib/",
     "@database/": "./src/database/",
     "@prisma/adapter-pg": "npm:@prisma/adapter-pg@^7.8.0",
