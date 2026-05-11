@@ -1,10 +1,10 @@
 import { env } from "../../src/lib/env.ts";
 
-const user = env("PG_USER");
-const password = env("PG_PASSWORD");
-const host = env("PG_HOST");
-const port = env("PG_PORT");
-const name = env("PG_NAME");
+const user = env("POSTGRES_USER");
+const password = env("POSTGRES_PASSWORD");
+const host = env("POSTGRES_HOST");
+const port = env("POSTGRES_PORT");
+const name = env("POSTGRES_DB");
 
 export const DatabaseConfig = {
   user,

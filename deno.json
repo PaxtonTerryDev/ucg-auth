@@ -1,11 +1,11 @@
 {
   "tasks": {
-    "api:dev": "deno run -A --env-file=env/api.local --env-file=env/database.local --watch src/api/server.ts",
-    "auth:generate": "deno run -A --env-file=env/database.local --env-file=env/api.local --env=.env npm:auth generate --config ./src/api/auth.ts --output ./src/database/schema.prisma",
-    "db:generate": "deno run -A --env-file=env/database.local --env=.env npm:prisma generate",
-    "db:push": "deno run -A --env-file=env/database.local --env=.env npm:prisma db push",
-    "db:migrate": "deno run -A --env-file=env/database.local --env=.env npm:prisma migrate dev",
-    "db:seed": "deno run -A --env-file=env/database.local --env=.env npm:prisma db seed"
+    "api:dev": "deno run -A --env-file=env/api.local.env --env-file=env/database.local.env --watch src/api/server.ts",
+    "auth:generate": "deno run -A --env-file=env/database.local.env --env-file=env/api.local --env=.env npm:auth generate --config ./src/api/auth.ts --output ./src/database/schema.prisma",
+    "db:generate": "deno run -A --env-file=env/database.local.env --env=.env npm:prisma generate",
+    "db:push": "deno run -A --env-file=env/database.local.env --env=.env npm:prisma db push",
+    "db:migrate": "deno run -A --env-file=env/database.local.env --env=.env npm:prisma migrate dev",
+    "db:seed": "deno run -A --env-file=env/database.local.env --env=.env npm:prisma db seed"
   },
   "nodeModulesDir": "auto",
   "compilerOptions": {
