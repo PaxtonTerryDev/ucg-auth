@@ -1,10 +1,14 @@
 model Group {
-  id          String   @id
-  name        String
-  description String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id            String   @id
+  applicationId String
+  name          String
+  description   String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
   roles       Role[]
+  resources   Resource[]
+  application Application @relation(fields: [applicationId], references: [id])
 
   @@map("group")
   @@schema("rbac")
@@ -20,6 +24,7 @@ model Role {
   group           Group            @relation(fields: [groupId], references: [id], onDelete: Cascade)
   rolePermissions RolePermission[]
   userRoles       UserRole[]
+  sessionRoles    SessionRole[]
 
   @@map("role")
   @@schema("rbac")
@@ -37,6 +42,33 @@ model UserRole {
   @@schema("rbac")
 }
 
+model SessionContext {
+  id            String   @id
+  sessionId     String   @unique
+  applicationId String
+  userId        String
+  createdAt     DateTime @default(now())
+
+  application  Application   @relation(fields: [applicationId], references: [id])
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sessionRoles SessionRole[]
+
+  @@map("sessionContext")
+  @@schema("rbac")
+}
+
+model SessionRole {
+  sessionContextId String
+  roleId           String
+
+  sessionContext SessionContext @relation(fields: [sessionContextId], references: [id], onDelete: Cascade)
+  role           Role           @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@id([sessionContextId, roleId])
+  @@map("sessionRole")
+  @@schema("rbac")
+}
+
 model Action {
   id          String       @id
   name        String
@@ -49,13 +81,32 @@ model Action {
 }
 
 model Resource {
-  id          String       @id
-  name        String
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-  permissions Permission[]
+  id                String             @id
+  name              String
+  groupId           String
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  permissions       Permission[]
+  resourceInstances ResourceInstance[]
+  group             Group              @relation(fields: [groupId], references: [id])
 
   @@map("resource")
+  @@schema("rbac")
+}
+
+model ResourceInstance {
+  id         String   @id
+  resourceId String
+  externalId String?
+  label      String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  resource  Resource   @relation(fields: [resourceId], references: [id])
+  auditLogs AuditLog[]
+
+  @@unique([resourceId, externalId])
+  @@map("resourceInstance")
   @@schema("rbac")
 }
 
@@ -63,11 +114,13 @@ model Permission {
   id              String           @unique @default(uuid())
   actionId        String
   resourceId      String
+  audited         Boolean          @default(false)
   createdAt       DateTime         @default(now())
   updatedAt       DateTime         @updatedAt
   action          Action           @relation(fields: [actionId], references: [id], onDelete: Cascade)
   resource        Resource         @relation(fields: [resourceId], references: [id], onDelete: Cascade)
   rolePermissions RolePermission[]
+  auditLogs       AuditLog[]
 
   @@id([actionId, resourceId])
   @@map("permission")
@@ -84,5 +137,24 @@ model RolePermission {
 
   @@id([roleId, permissionId])
   @@map("rolePermission")
+  @@schema("rbac")
+}
+
+model AuditLog {
+  id                 String   @id
+  userId             String
+  sessionId          String?
+  applicationId      String
+  permissionId       String
+  resourceInstanceId String?
+  ipAddress          String?
+  userAgent          String?
+  createdAt          DateTime @default(now())
+
+  permission       Permission        @relation(fields: [permissionId], references: [id])
+  resourceInstance ResourceInstance? @relation(fields: [resourceInstanceId], references: [id])
+  application      Application       @relation(fields: [applicationId], references: [id])
+
+  @@map("auditLog")
   @@schema("rbac")
 }

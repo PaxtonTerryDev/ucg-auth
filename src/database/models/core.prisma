@@ -14,6 +14,7 @@ model User {
   oauthaccesstokens  OauthAccessToken[]
   oauthconsents      OauthConsent[]
   userRoles          UserRole[]
+  sessionContexts    SessionContext[]
 
   @@unique([email])
   @@map("user")
@@ -24,12 +25,16 @@ model Application {
   id            String   @id
   name          String
   slug          String
+  repository    String   @unique
   description   String?
   oAuthClientId String
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
-  oAuthClient OauthClient @relation(fields: [oAuthClientId], references: [clientId])
+  oAuthClient     OauthClient      @relation(fields: [oAuthClientId], references: [clientId])
+  groups          Group[]
+  sessionContexts SessionContext[]
+  auditLogs       AuditLog[]
 
   @@map("application")
   @@schema("core")
