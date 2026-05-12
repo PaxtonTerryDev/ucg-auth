@@ -16,7 +16,8 @@
     "npm:hono@^4.12.18": "4.12.18",
     "npm:picocolors@^1.1.1": "1.1.1",
     "npm:prisma@*": "7.8.0_@types+react@19.2.14_react@19.2.5_react-dom@19.2.5__react@19.2.5",
-    "npm:prisma@^7.8.0": "7.8.0_@types+react@19.2.14_react@19.2.5_react-dom@19.2.5__react@19.2.5"
+    "npm:prisma@^7.8.0": "7.8.0_@types+react@19.2.14_react@19.2.5_react-dom@19.2.5__react@19.2.5",
+    "npm:zod@^4.4.3": "4.4.3"
   },
   "jsr": {
     "@cliffy/command@1.1.0": {
@@ -1507,7 +1508,8 @@
       "npm:better-auth@^1.6.10",
       "npm:hono@^4.12.18",
       "npm:picocolors@^1.1.1",
-      "npm:prisma@^7.8.0"
+      "npm:prisma@^7.8.0",
+      "npm:zod@^4.4.3"
     ]
   }
 }

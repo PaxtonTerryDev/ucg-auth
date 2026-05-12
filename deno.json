@@ -22,6 +22,7 @@
   },
   "imports": {
     "@api/": "./src/api/",
+    "@schemas/": "./src/schemas/",
     "@better-auth/oauth-provider": "npm:@better-auth/oauth-provider@^1.6.10",
     "@cli/": "./src/cli/",
     "@cliffy/command": "jsr:@cliffy/command@^1.1.0",
@@ -32,7 +33,8 @@
     "better-auth": "npm:better-auth@^1.6.10",
     "hono": "npm:hono@^4.12.18",
     "picocolors": "npm:picocolors@^1.1.1",
-    "prisma": "npm:prisma@^7.8.0"
+    "prisma": "npm:prisma@^7.8.0",
+    "zod": "npm:zod@^4.4.3"
   },
   "allowScripts": [
     "npm:@prisma/engines@7.8.0",
