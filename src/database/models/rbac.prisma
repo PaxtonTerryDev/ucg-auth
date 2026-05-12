@@ -147,6 +147,7 @@ model AuditLog {
   applicationId      String
   permissionId       String
   resourceInstanceId String?
+  allowed            Boolean
   ipAddress          String?
   userAgent          String?
   createdAt          DateTime @default(now())
