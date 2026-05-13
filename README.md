@@ -73,7 +73,7 @@ You can get a development environment up and running pretty quickly.
 
 Make sure you have Deno installed. If you don't have it installed, you can follow the [Deno installation docs](https://docs.deno.com/runtime/getting_started/installation/).
 If you haven't used Deno before, it's pretty similar to Node, but I would recommend reading through the first few pages of documentation to get a general idea of what you can do with it.
-Once you have the runtime installed, should be able to run any of the `dev` commands that can be found in `deno.json` under the "tasks" section.
+Once you have the runtime installed, you should be able to run any of the `dev` commands that can be found in `deno.json` under the "tasks" section.
 
 ```shell
 deno run api:dev # Starts up a local instance of the api
@@ -81,4 +81,4 @@ deno run api:dev # Starts up a local instance of the api
 
 You can find more specific documentation for each "module" inside each of the `src/` sub-directories (they all should have their own `README.md` that explains how the module works / is structured)
 
-## Common Pitfalls
+
