@@ -1,0 +1,13 @@
+{
+  "name": "@ucg-auth/sdk",
+  "type": "module",
+  "exports": {
+    ".": "./src/ucg-auth.ts"
+  },
+  "dependencies": {
+    "better-auth": "^1.6.10"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}

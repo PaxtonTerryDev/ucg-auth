@@ -1,0 +1,17 @@
+{
+  "name": "@ucg-auth/lib",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./env": "./src/env.ts",
+    "./log": "./src/log.ts",
+    "./fs-search": "./src/fs-search.ts",
+    "./pretty-json": "./src/pretty-json.ts"
+  },
+  "dependencies": {
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}

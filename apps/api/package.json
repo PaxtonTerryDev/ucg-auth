@@ -1,0 +1,22 @@
+{
+  "name": "@ucg-auth/api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "dotenv-cli -e ../../env/api.local.env -e ../../env/database.local.env -- tsx watch src/server.ts"
+  },
+  "dependencies": {
+    "@better-auth/oauth-provider": "^1.6.10",
+    "@ucg-auth/database": "workspace:*",
+    "@ucg-auth/lib": "workspace:*",
+    "@ucg-auth/schemas": "workspace:*",
+    "better-auth": "^1.6.10",
+    "hono": "^4.12.18"
+  },
+  "devDependencies": {
+    "@hono/node-server": "^1.14.4",
+    "dotenv-cli": "^8.0.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@ucg-auth/lib/env": ["../lib/src/env.ts"],
+      "@ucg-auth/schemas/*": ["../schemas/src/*"]
+    }
+  },
+  "include": ["src/**/*", "prisma.config.ts"]
+}

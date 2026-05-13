@@ -1,9 +1,0 @@
-export { applicationRepository } from "./application.repository.ts";
-export { groupRepository } from "./group.repository.ts";
-export { roleRepository } from "./role.repository.ts";
-export { resourceRepository } from "./resource.repository.ts";
-export { actionRepository } from "./action.repository.ts";
-export { permissionRepository } from "./permission.repository.ts";
-export { userRepository } from "./user.repository.ts";
-export { sessionContextRepository } from "./session-context.repository.ts";
-export { auditLogRepository } from "./audit-log.repository.ts";

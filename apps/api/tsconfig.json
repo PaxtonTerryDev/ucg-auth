@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "hono/jsx",
+    "paths": {
+      "@ucg-auth/lib/env": ["../../packages/lib/src/env.ts"],
+      "@ucg-auth/lib/log": ["../../packages/lib/src/log.ts"],
+      "@ucg-auth/lib/fs-search": ["../../packages/lib/src/fs-search.ts"],
+      "@ucg-auth/lib/pretty-json": ["../../packages/lib/src/pretty-json.ts"],
+      "@ucg-auth/database/prisma": ["../../packages/database/src/prisma.ts"],
+      "@ucg-auth/database/repositories": ["../../packages/database/src/repositories/index.ts"],
+      "@ucg-auth/schemas/*": ["../../packages/schemas/src/*"]
+    }
+  },
+  "include": ["src/**/*"]
+}
